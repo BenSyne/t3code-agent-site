@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>T3 Code — Agent Build · a built-in agent, and a swarm you run from one chat</title>
-<meta name="description" content="An unofficial fork of T3 Code with a built-in coding agent. Bring your own key from any provider — or run it fully local. It also drives every other agent you already have, so you can deploy and supervise a swarm from a single chat." />
+<title>T3 Orchestrator — the agent T3 Code was missing, and it runs the other ones</title>
+<meta name="description" content="An unofficial fork of T3 Code with a built-in coding agent called T3 Orchestrator. Bring your own key from any provider — or run it fully local. It also drives every other agent you already have, so you can deploy and supervise a swarm from a single chat." />
 <meta name="theme-color" content="#08090a" />
 
 <meta property="og:type" content="website" />
-<meta property="og:title" content="T3 Code — Agent Build" />
-<meta property="og:description" content="T3 Code was missing an agent of its own. So I built one — and it runs all your other agents too." />
+<meta property="og:title" content="T3 Orchestrator — an agent for T3 Code that runs your other agents" />
+<meta property="og:description" content="T3 Code was missing an agent of its own. So I built one — and it runs all your other agents too, from a single chat." />
 <meta name="twitter:card" content="summary_large_image" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -462,7 +462,7 @@
       <span class="chip"><span class="tick">●</span> Cursor</span>
       <span class="chip"><span class="tick">●</span> Grok Build</span>
       <span class="chip"><span class="tick">●</span> OpenCode</span>
-      <span class="chip empty">+ one of its own</span>
+      <span class="chip empty">+ T3 Orchestrator</span>
     </div>
 
     <p class="lede rv" style="margin-top:34px; max-width:640px">
@@ -481,8 +481,10 @@
     <div class="sec-head rv">
       <p class="eyebrow">Part one</p>
       <h2>A real coding agent,<br />built in.</h2>
-      <p class="lede">Not a chat box bolted onto the sidebar. It runs in-process as a first-class
-      provider, which means every feature T3 Code already has works on it unchanged.</p>
+      <p class="lede">It's called <strong>T3 Orchestrator</strong> — and before it orchestrates
+      anything, it does the ordinary job properly. Not a chat box bolted onto the sidebar: it runs
+      in-process as a first-class provider, which means every feature T3 Code already has works on
+      it unchanged.</p>
     </div>
 
     <div class="grid g3">
@@ -556,8 +558,9 @@
     <div class="sec-head rv">
       <p class="eyebrow">Part two — the actual point</p>
       <h2>And it runs all<br />the other ones.</h2>
-      <p class="lede">This is the part that changes how the app feels. The built-in agent isn't just
-      another provider in the list — it can operate the list.</p>
+      <p class="lede">This is the part that changes how the app feels, and the reason it's called
+      what it's called. T3 Orchestrator isn't just another provider in the list — it can operate
+      the list.</p>
     </div>
 
     <div class="diagram rv">
@@ -591,7 +594,7 @@
         <g filter="url(#glow)">
           <rect x="200" y="146" width="176" height="86" rx="14" fill="#1a1526" stroke="rgba(155,124,255,.45)"/>
         </g>
-        <text x="288" y="177" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-size="14.5" font-weight="700">Built-in agent</text>
+        <text x="288" y="177" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-size="14.5" font-weight="700">T3 Orchestrator</text>
         <text x="288" y="197" text-anchor="middle" fill="#9b7cff" font-family="JetBrains Mono,monospace" font-size="11">your key · your model</text>
         <text x="288" y="215" text-anchor="middle" fill="#6e757e" font-family="Inter,sans-serif" font-size="11">picks who does what</text>
 
@@ -832,7 +835,7 @@
       </div>
 
       <ol class="steps-2">
-        <li>Open the app, then <strong>Settings → Providers → +</strong> and pick the built-in agent.</li>
+        <li>Open the app, then <strong>Settings → Providers → +</strong> and pick <strong>T3 Orchestrator</strong>.</li>
         <li>It defaults to OpenRouter. Paste your key into the <strong>Environment variables</strong>
         section — the field marked <em>sensitive</em>, which keeps it out of <code>settings.json</code>.</li>
         <li>Start a thread, pick a model, go.</li>
