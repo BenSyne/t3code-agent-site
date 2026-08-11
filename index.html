@@ -159,6 +159,16 @@
 
   .rule{height:1px; background:linear-gradient(90deg,transparent,var(--line-strong),transparent); border:0; margin:0}
 
+  /* ---------- demo video ---------- */
+  .demo-frame{
+    margin-top:44px; padding:10px;
+    background:linear-gradient(180deg,var(--bg-raise),#0a0c0e);
+    border:1px solid var(--line-strong); border-radius:18px;
+    box-shadow:0 30px 90px -30px rgba(155,124,255,.3);
+  }
+  .demo-frame video{display:block; width:100%; border-radius:10px; background:#000}
+  .demo-cap{display:flex; flex-wrap:wrap; gap:6px 18px; margin-top:16px; padding:0 6px; font-size:13.5px; color:var(--fg-3)}
+
   /* ---------- story ---------- */
   .story{display:grid; gap:2px; margin-top:8px}
   .beat{
@@ -371,7 +381,7 @@
   <div class="wrap">
     <div class="badge">
       <span class="pip"></span>
-      <b>v0.0.32</b> · unofficial fork · signed &amp; notarized
+      <b>v0.0.33</b> · unofficial fork · installs beside the real thing
     </div>
 
     <h1>
@@ -392,18 +402,45 @@
         <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 1.5v9M4.5 7.5 8 11l3.5-3.5M2 12.5v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-1"/></svg>
         Download for macOS
       </a>
-      <a class="btn btn-lg" href="https://github.com/BenSyne/t3code/pull/1">Read the diff →</a>
+      <a class="btn btn-lg" href="#demo">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M4 2.5v11l9-5.5z"/></svg>
+        Watch the demo — 100 seconds
+      </a>
     </div>
 
     <div class="hero-fine">
       <span>Apple Silicon</span>
       <span>·</span>
-      <span>Opens normally — no Gatekeeper fight</span>
+      <span>Unsigned preview — two clicks past Gatekeeper</span>
       <span>·</span>
       <span>MIT, like upstream</span>
     </div>
   </div>
 </header>
+
+<hr class="rule" />
+
+<!-- ============ DEMO ============ -->
+<section id="demo">
+  <div class="wrap">
+    <div class="sec-head rv" style="margin-bottom:0">
+      <p class="eyebrow">Watch it run</p>
+      <h2>It narrates its own demo.</h2>
+      <p class="lede">One prompt. The agent fans six questions out across Claude and Codex, reads
+      the answers back, follows up, files the threads — and announces every move out loud through
+      the Mac's speech engine while it works. Nobody touches the keyboard after Enter.</p>
+    </div>
+    <div class="demo-frame rv">
+      <!-- PLACEHOLDER-VIDEO: drop the demo at assets/demo.mp4 (optional poster: assets/demo-poster.jpg) -->
+      <video controls preload="metadata" src="/assets/demo.mp4"></video>
+    </div>
+    <p class="demo-cap rv">
+      <span>100 seconds, one take</span><span>·</span>
+      <span>six live threads across two providers</span><span>·</span>
+      <span>the voice is <code>say</code> — the agent runs it itself</span>
+    </p>
+  </div>
+</section>
 
 <hr class="rule" />
 
@@ -520,9 +557,10 @@
       </div>
       <div class="card rv g">
         <div class="ico"><svg width="17" height="17" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5.5a3.5 3.5 0 1 0-3.5 3.5"/><path d="M8.5 14a3.5 3.5 0 1 0 0-7"/></svg></div>
-        <h3>It costs what you choose</h3>
-        <p>Threads show the running spend on a key you actually pay for, so a long session isn't a
-        surprise at the end of the month.</p>
+        <h3>It shows you the bill while it runs</h3>
+        <p>Every thread carries a live cost readout — total spend, and what the last turn cost —
+        priced from your provider's own published rates, cache discounts included. A model it can't
+        price reads "unknown" instead of pretending to be free.</p>
       </div>
     </div>
 
@@ -533,7 +571,7 @@
 
     <div class="rv">
       <div class="backend">
-        <div><b>OpenRouter</b><span>The default. One key, and almost every model worth using behind it.</span></div>
+        <div><b>OpenRouter</b><span>The default. One key, four hundred models behind it, prompt caching marked on every request — and the model list reads live from their catalogue, so it can't go stale.</span></div>
         <span class="pill on">recommended</span>
       </div>
       <div class="backend">
@@ -675,6 +713,18 @@
         <p>Send a correction back into the same thread, rename it, snooze it, pin it, settle it or
         archive it. The inbox stays yours, but you don't have to do the filing.</p>
       </div>
+      <div class="card">
+        <div class="ico"><svg width="17" height="17" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="4.5" cy="4" r="2"/><circle cx="4.5" cy="12" r="2"/><circle cx="11.5" cy="8" r="2"/><path d="M4.5 6v4M6.3 4.8 9.7 7.2M6.3 11.2 9.7 8.8"/></svg></div>
+        <h3>Delegations can't collide</h3>
+        <p>Every delegated thread gets its own git worktree and branch, so five agents can work the
+        same repo at once without overwriting each other. You merge what you like, when you like.</p>
+      </div>
+      <div class="card">
+        <div class="ico"><svg width="17" height="17" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6"/><path d="M8 4.5V8l2.4 1.4"/></svg></div>
+        <h3>It waits without burning tokens</h3>
+        <p>Tell it to wait on a delegate and it holds on a real server-side wait — no polling loop —
+        and wakes the moment the thread settles or stops to ask a question.</p>
+      </div>
     </div>
 
     <div class="vs">
@@ -726,6 +776,8 @@
         <span class="tool"><span class="d"></span>glob</span>
         <span class="tool"><span class="d"></span>grep</span>
         <span class="tool"><span class="d"></span>bash</span>
+        <span class="tool"><span class="d"></span>webfetch</span>
+        <span class="tool"><span class="d"></span>update_plan</span>
         <span class="tool"><span class="d"></span>sub-agents</span>
         <span class="tool"><span class="d"></span>skills</span>
         <span class="tool"><span class="d"></span>mcp servers</span>
@@ -738,10 +790,14 @@
         <span class="tool o"><span class="d"></span>list_projects</span>
         <span class="tool o"><span class="d"></span>list_threads</span>
         <span class="tool o"><span class="d"></span>create_project</span>
+        <span class="tool o"><span class="d"></span>delegate_to_agent</span>
+        <span class="tool o"><span class="d"></span>wait_for_thread</span>
         <span class="tool o"><span class="d"></span>read_delegated_thread</span>
         <span class="tool o"><span class="d"></span>send_to_thread</span>
         <span class="tool o"><span class="d"></span>answer_thread_question</span>
         <span class="tool o"><span class="d"></span>approve_delegated_request</span>
+        <span class="tool o"><span class="d"></span>stop_delegated_thread</span>
+        <span class="tool o"><span class="d"></span>revert_delegated_thread</span>
         <span class="tool o"><span class="d"></span>set_thread_state</span>
         <span class="tool o"><span class="d"></span>rename_thread</span>
       </div>
@@ -762,9 +818,10 @@
       <div>
         <span class="x">01</span>
         <div>
-          <b>Nothing pings it when a delegated thread finishes.</b>
-          <p>It reads them back when you next ask. There is no background watcher — and it will tell
-          you that, rather than promising to keep an eye on things it can't see.</p>
+          <b>It waits when told to. It doesn't lurk.</b>
+          <p>It can hold on a delegated thread until the work settles — a real server-side wait, not
+          a polling loop. But nothing pings it unprompted: there's no background watcher, and it
+          will tell you that rather than promise to watch things it can't see.</p>
         </div>
       </div>
       <div>
@@ -800,7 +857,8 @@
         <span class="x">06</span>
         <div>
           <b>It's early, and it's a fork.</b>
-          <p>Upstream says to expect bugs. This adds 17,000 lines on top of that. Treat it accordingly.</p>
+          <p>Upstream says to expect bugs. This adds sixty-four thousand lines on top of that. Treat
+          it accordingly.</p>
         </div>
       </div>
     </div>
@@ -819,27 +877,35 @@
       <div class="dl-top">
         <div>
           <h3>macOS · Apple Silicon</h3>
-          <p class="fg2" style="font-size:15px">Signed with a Developer ID and notarized by Apple, so it
-          just opens. No right-click, no "damaged" dialog, no argument with Gatekeeper.</p>
+          <p class="fg2" style="font-size:15px">Installs as <strong>T3 Code (T3 Agent)</strong> — its
+          own name, its own bundle ID — so it lands beside your real T3 Code, never on top of it.</p>
         </div>
-        <a class="btn btn-primary btn-lg" href="https://github.com/BenSyne/t3code/releases/download/v0.0.32-agent.1/T3-Code-0.0.32-arm64.dmg">
+        <!-- PLACEHOLDER-DOWNLOAD-URL: swap for the GitHub release asset URL once uploaded -->
+        <a class="btn btn-primary btn-lg" href="/downloads/T3-Code-T3-Agent-0.0.33-arm64.dmg">
           <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 1.5v9M4.5 7.5 8 11l3.5-3.5M2 12.5v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-1"/></svg>
           Download .dmg
         </a>
       </div>
       <div class="dl-meta">
-        <span class="ok">✓ notarized by Apple</span>
-        <span>~150 MB</span>
-        <span>v0.0.32-agent.1</span>
-        <span><a href="https://github.com/BenSyne/t3code/releases/tag/v0.0.32-agent.1" style="color:inherit; text-decoration:underline; text-underline-offset:3px">release notes</a></span>
+        <span>~152 MB</span>
+        <span>v0.0.33</span>
+        <span style="color:var(--amber)">unsigned preview — macOS objects once, steps below</span>
       </div>
 
       <ol class="steps-2">
-        <li>Open the app, then <strong>Settings → Providers → +</strong> and pick <strong>T3 Orchestrator</strong>.</li>
-        <li>It defaults to OpenRouter. Paste your key into the <strong>Environment variables</strong>
-        section — the field marked <em>sensitive</em>, which keeps it out of <code>settings.json</code>.</li>
+        <li>Open the DMG, drag to Applications. Your existing T3 Code is untouched.</li>
+        <li>First launch only: macOS balks at unsigned apps. <strong>System Settings → Privacy &amp;
+        Security</strong>, scroll down, <strong>Open Anyway</strong>. Signed builds are coming;
+        this is the preview.</li>
+        <li>In the app: <strong>Settings → Providers → +</strong>, pick <strong>T3 Orchestrator</strong>.</li>
+        <li>It defaults to OpenRouter. Paste your key into the field marked <em>sensitive</em> —
+        that keeps it out of <code>settings.json</code>.</li>
         <li>Start a thread, pick a model, go.</li>
       </ol>
+
+      <p class="muted" style="margin-top:18px; font-size:13.5px">One caveat worth knowing: it shares
+      its on-disk data (<code>~/.t3</code>) with an official install — same projects, same threads,
+      same provider keys. Run one at a time.</p>
     </div>
 
     <div class="grid g2" style="margin-top:14px">
@@ -848,7 +914,7 @@
         <p style="margin-bottom:16px">No prebuilt binary yet — build it from source. Needs Node 22.16+,
         23.11+ or 24.10+.</p>
 <pre><span class="c"># clone the branch</span>
-git clone -b feat/t3agent-builtin-provider \
+git clone -b feat/t3agent-upstream-pr \
   https://github.com/BenSyne/t3code.git
 cd t3code
 
@@ -886,7 +952,7 @@ vp i
       </p>
       <p class="lede" style="margin-top:18px; max-width:640px">
         It stays on my fork. You've said big features won't be accepted, and that thousand-line PRs
-        are a good way to get banned. This is seventeen thousand, and your review queue is yours to
+        are a good way to get banned. This is sixty-four thousand, and your review queue is yours to
         protect. So this is an ordinary PR against my own <code>main</code> — full file-by-file
         diff, a suggested reading order, comments open. Nothing to merge, nothing to close, nobody
         notified.
@@ -898,19 +964,21 @@ vp i
       </p>
 
       <div class="stats">
-        <div class="stat"><b>130</b><span>files changed</span></div>
-        <div class="stat"><b>17.2k</b><span>lines added</span></div>
-        <div class="stat"><b>51</b><span>commits, each standalone</span></div>
-        <div class="stat"><b>787</b><span>tests passing</span></div>
+        <div class="stat"><b>466</b><span>files changed</span></div>
+        <div class="stat"><b>63.8k</b><span>lines added</span></div>
+        <div class="stat"><b>136</b><span>commits, each standalone</span></div>
+        <div class="stat"><b>395</b><span>tests on the agent alone</span></div>
       </div>
 
       <div class="hero-cta" style="margin-top:32px">
+        <!-- PLACEHOLDER-PR-URL: PR not opened yet. When it is, update this href and the matching
+             pull/1 link in the nav. -->
         <a class="btn btn-primary" href="https://github.com/BenSyne/t3code/pull/1">Read the diff →</a>
-        <a class="btn" href="https://github.com/BenSyne/t3code/tree/feat/t3agent-builtin-provider">Browse the branch</a>
+        <a class="btn" href="https://github.com/BenSyne/t3code/tree/feat/t3agent-upstream-pr">Browse the branch</a>
       </div>
 
       <p class="muted" style="margin-top:26px; font-size:14px">
-        Built on upstream <code>89c320df</code> · v0.0.32 · 8 Aug 2026
+        Built on upstream <code>89c320df</code> · v0.0.33 · 11 Aug 2026
       </p>
     </div>
   </div>
@@ -927,9 +995,9 @@ vp i
         one chat.</p>
       </div>
       <div class="foot-links">
-        <a href="https://github.com/BenSyne/t3code/releases/tag/v0.0.32-agent.1">Download</a>
+        <a href="#get">Download</a>
         <a href="https://github.com/BenSyne/t3code/pull/1">The diff</a>
-        <a href="https://github.com/BenSyne/t3code/blob/feat/t3agent-builtin-provider/docs/user/t3-agent.md">Docs</a>
+        <a href="https://github.com/BenSyne/t3code/blob/feat/t3agent-upstream-pr/docs/user/t3-agent.md">Docs</a>
         <a href="https://github.com/pingdotgg/t3code">Upstream</a>
       </div>
     </div>
