@@ -258,6 +258,15 @@
     .caret{display:none} .sdot{animation:none}
   }
 
+  /* ---------- quieter backends ---------- */
+  details.more-backends{margin-top:14px}
+  details.more-backends summary{cursor:pointer; list-style:none; display:inline-flex; align-items:center; gap:9px; font-size:13.5px; color:var(--fg-3); padding:10px 2px}
+  details.more-backends summary::-webkit-details-marker{display:none}
+  details.more-backends summary::before{content:'▸'; font-size:11px; transition:transform .2s}
+  details.more-backends[open] summary::before{transform:rotate(90deg)}
+  details.more-backends summary:hover{color:var(--fg-2)}
+  details.more-backends .backend{margin-top:10px}
+
   /* ---------- example prompts ---------- */
   .prompts{display:grid; gap:10px; margin-top:38px}
   .prompt{
@@ -765,27 +774,31 @@
     </div>
 
     <div class="sec-head rv" style="margin-top:var(--section); margin-bottom:26px">
-      <p class="eyebrow">Bring your own everything</p>
-      <h2 style="font-size:clamp(24px,3.4vw,32px)">Four backends, one form.</h2>
+      <p class="eyebrow">Bring one key</p>
+      <h2 style="font-size:clamp(24px,3.4vw,32px)">One OpenRouter key.<br />The whole frontier.</h2>
     </div>
 
     <div class="rv">
-      <div class="backend">
-        <div><b>OpenRouter</b><span>The default. One key, four hundred models behind it, prompt caching marked on every request, and the model list reads live from their catalogue, so it can't go stale.</span></div>
+      <div class="backend" style="border-color:rgba(127,231,210,.3); background:linear-gradient(180deg,rgba(127,231,210,.05),var(--surface))">
+        <div><b>OpenRouter</b><span>The default, and the path this preview was tested hard on. One key, four hundred models behind it, prompt caching marked on every request, exact per-model pricing read live from their catalogue. Paste the key and go.</span></div>
         <span class="pill on">recommended</span>
       </div>
-      <div class="backend">
-        <div><b>Anthropic</b><span>Straight to the source, on your own API key.</span></div>
-        <span class="pill">direct</span>
-      </div>
-      <div class="backend">
-        <div><b>Cerebras</b><span>For when you want the tokens to arrive absurdly fast.</span></div>
-        <span class="pill">direct</span>
-      </div>
-      <div class="backend">
-        <div><b>Anything OpenAI-compatible</b><span>Ollama, LM Studio, vLLM, your own box. Fully local, no key required, nothing leaves the machine.</span></div>
-        <span class="pill on">no key needed</span>
-      </div>
+      <details class="more-backends">
+        <summary>It speaks three other backends too, if you need them</summary>
+        <div class="backend">
+          <div><b>Anthropic</b><span>Straight to the source, on your own API key.</span></div>
+          <span class="pill">direct</span>
+        </div>
+        <div class="backend">
+          <div><b>Cerebras</b><span>For when you want the tokens to arrive absurdly fast.</span></div>
+          <span class="pill">direct</span>
+        </div>
+        <div class="backend">
+          <div><b>Anything OpenAI-compatible</b><span>Ollama, LM Studio, vLLM, your own box. Fully local, no key required, nothing leaves the machine.</span></div>
+          <span class="pill on">no key needed</span>
+        </div>
+        <p class="muted" style="margin-top:12px; font-size:13px">These ship and work; they just have fewer miles on them than OpenRouter does.</p>
+      </details>
     </div>
   </div>
 </section>
