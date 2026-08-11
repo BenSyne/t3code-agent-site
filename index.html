@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>T3 Agent — the native orchestrator built into T3 Code</title>
 <meta name="description" content="T3 Code is the best command center for coding agents. T3 Agent fills its one gap: a native agent, built directly in, that orchestrates Claude, Codex and the rest of your fleet on your behalf — on your key, your model, or fully local." />
-<meta name="theme-color" content="#08090a" />
+<meta name="theme-color" content="#0b1210" />
 
 <meta property="og:type" content="website" />
 <meta property="og:title" content="T3 Agent — one agent that runs all your agents" />
@@ -14,30 +14,31 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700;800&family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
 <style>
   :root{
-    --bg:#08090a;
-    --bg-raise:#0d0f11;
-    --surface:#111316;
-    --surface-2:#16191d;
+    --bg:#0b1210;
+    --bg-raise:#101814;
+    --surface:#131c17;
+    --surface-2:#18231d;
     --line:rgba(255,255,255,.075);
     --line-strong:rgba(255,255,255,.14);
 
-    --fg:#eceef1;
-    --fg-2:#a3a9b1;
-    --fg-3:#6e757e;
+    --fg:#eae6d8;
+    --fg-2:#a9ac9b;
+    --fg-3:#74796a;
 
-    --violet:#9b7cff;
-    --violet-dim:rgba(155,124,255,.14);
-    --green:#4ade9b;
-    --green-dim:rgba(74,222,155,.12);
-    --amber:#f0b85e;
-    --amber-dim:rgba(240,184,94,.11);
+    --lamp:#ffb000;
+    --lamp-dim:rgba(255,176,0,.14);
+    --jade:#7cc9a6;
+    --jade-dim:rgba(124,201,166,.12);
+    --signal:#ff7849;
+    --signal-dim:rgba(255,120,73,.11);
 
-    --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
-    --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+    --sans:'Hanken Grotesk',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+    --display:'Bricolage Grotesque','Hanken Grotesk',sans-serif;
+    --mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
 
     --pad:clamp(20px,5vw,32px);
     --maxw:1080px;
@@ -54,32 +55,32 @@
   }
   a{color:inherit}
   img,svg{max-width:100%}
-  ::selection{background:rgba(155,124,255,.3)}
+  ::selection{background:rgba(255,176,0,.3)}
 
   .wrap{max-width:var(--maxw); margin:0 auto; padding-inline:var(--pad)}
   .narrow{max-width:660px}
 
-  h1,h2,h3{margin:0; letter-spacing:-.03em; line-height:1.1; font-weight:700}
-  h1{font-size:clamp(38px,7.2vw,72px); font-weight:800; letter-spacing:-.045em}
+  h1,h2,h3{margin:0; font-family:var(--display); letter-spacing:-.02em; line-height:1.08; font-weight:700}
+  h1{font-size:clamp(38px,7vw,70px); font-weight:800; letter-spacing:-.03em}
   h2{font-size:clamp(28px,4.4vw,44px)}
   h3{font-size:clamp(18px,2.4vw,21px); letter-spacing:-.02em}
   p{margin:0}
 
   .eyebrow{
-    font-size:12px; font-weight:600; letter-spacing:.13em; text-transform:uppercase;
-    color:var(--fg-3);
+    font-family:var(--mono); font-size:11.5px; font-weight:500; letter-spacing:.16em;
+    text-transform:uppercase; color:var(--fg-3);
   }
   .lede{font-size:clamp(17px,2.1vw,20px); color:var(--fg-2); line-height:1.6}
   .muted{color:var(--fg-3)}
   .fg2{color:var(--fg-2)}
   code,.mono{font-family:var(--mono); font-size:.88em}
-  strong{color:#fff; font-weight:600}
+  strong{color:#f7f3e4; font-weight:600}
 
   /* ---------- nav ---------- */
   .nav{
     position:sticky; top:0; z-index:50;
     backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
-    background:rgba(8,9,10,.72); border-bottom:1px solid transparent;
+    background:rgba(11,18,16,.72); border-bottom:1px solid transparent;
     transition:border-color .3s;
   }
   .nav.stuck{border-bottom-color:var(--line)}
@@ -88,39 +89,39 @@
     display:flex; align-items:center; gap:16px;
   }
   .brand{display:flex; align-items:center; gap:9px; font-weight:600; font-size:14.5px; letter-spacing:-.015em; text-decoration:none}
-  .brand .dot{width:7px;height:7px;border-radius:50%;background:var(--violet); box-shadow:0 0 12px var(--violet); flex:none}
+  .brand .dot{width:7px;height:7px;border-radius:50%;background:var(--lamp); box-shadow:0 0 12px var(--lamp); flex:none}
   .brand .tag{
     font-size:10.5px; font-weight:600; letter-spacing:.07em; text-transform:uppercase;
-    color:var(--violet); background:var(--violet-dim); border:1px solid rgba(155,124,255,.22);
+    color:var(--lamp); background:var(--lamp-dim); border:1px solid rgba(255,176,0,.22);
     padding:2.5px 7px; border-radius:5px;
   }
   .nav-links{margin-left:auto; display:flex; align-items:center; gap:8px}
-  .nav-links a.txt{font-size:14px; color:var(--fg-2); text-decoration:none; padding:7px 10px; border-radius:7px; transition:.15s}
+  .nav-links a.txt{font-size:14px; color:var(--fg-2); text-decoration:none; padding:7px 10px; border-radius:3px; transition:.15s}
   .nav-links a.txt:hover{color:var(--fg); background:rgba(255,255,255,.05)}
   @media(max-width:620px){ .nav-links a.txt{display:none} }
 
   /* ---------- buttons ---------- */
   .btn{
     display:inline-flex; align-items:center; gap:9px;
-    padding:11px 18px; border-radius:9px; font-size:14.5px; font-weight:600;
+    padding:11px 18px; border-radius:4px; font-size:14.5px; font-weight:600;
     text-decoration:none; border:1px solid var(--line-strong); color:var(--fg);
     background:var(--surface-2); transition:.16s ease; white-space:nowrap;
   }
-  .btn:hover{background:#1d2126; border-color:rgba(255,255,255,.22); transform:translateY(-1px)}
+  .btn:hover{background:#1f2a23; border-color:rgba(255,255,255,.22); transform:translateY(-1px)}
   .btn-primary{
-    background:linear-gradient(180deg,#a98cff,#8563f5); color:#0b0713; border-color:transparent;
-    box-shadow:0 1px 0 rgba(255,255,255,.22) inset, 0 8px 26px -8px rgba(155,124,255,.6);
+    background:linear-gradient(180deg,#ffc24d,#f5a300); color:#1a1205; border-color:transparent;
+    box-shadow:0 1px 0 rgba(255,255,255,.22) inset, 0 8px 26px -8px rgba(255,176,0,.6);
   }
-  .btn-primary:hover{background:linear-gradient(180deg,#b79bff,#9070ff); box-shadow:0 1px 0 rgba(255,255,255,.28) inset, 0 12px 32px -8px rgba(155,124,255,.75)}
-  .btn-lg{padding:14px 24px; font-size:15.5px; border-radius:11px}
+  .btn-primary:hover{background:linear-gradient(180deg,#ffd066,#ffad1a); box-shadow:0 1px 0 rgba(255,255,255,.28) inset, 0 12px 32px -8px rgba(255,176,0,.75)}
+  .btn-lg{padding:14px 24px; font-size:15.5px; border-radius:5px}
 
   /* ---------- hero ---------- */
   .hero{position:relative; padding-block:clamp(64px,12vw,120px) clamp(60px,10vw,110px); overflow:hidden}
   .hero::before{
     content:''; position:absolute; inset:-30% -10% auto; height:820px;
     background:
-      radial-gradient(46% 42% at 22% 26%, rgba(155,124,255,.20), transparent 70%),
-      radial-gradient(40% 40% at 78% 12%, rgba(74,222,155,.10), transparent 70%);
+      radial-gradient(46% 42% at 22% 26%, rgba(255,176,0,.20), transparent 70%),
+      radial-gradient(40% 40% at 78% 12%, rgba(124,201,166,.10), transparent 70%);
     filter:blur(26px); pointer-events:none;
   }
   .hero::after{
@@ -135,17 +136,16 @@
 
   .badge{
     display:inline-flex; align-items:center; gap:8px; margin-bottom:26px;
-    padding:6px 13px 6px 8px; border-radius:99px; font-size:13px; color:var(--fg-2);
+    padding:6px 13px 6px 8px; border-radius:4px; font-size:13px; color:var(--fg-2);
     background:var(--surface); border:1px solid var(--line);
   }
   .badge b{color:var(--fg); font-weight:600}
-  .badge .pip{width:6px;height:6px;border-radius:50%;background:var(--green); box-shadow:0 0 10px var(--green); margin-left:2px}
+  .badge .pip{width:6px;height:6px;border-radius:50%;background:var(--jade); box-shadow:0 0 10px var(--jade); margin-left:2px}
 
   h1 .fade{color:var(--fg-3)}
-  h1 .grad{
-    background:linear-gradient(100deg,#fff 8%,#c7b6ff 46%,#9b7cff 92%);
-    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
-  }
+  /* Solid lamp-amber. No gradient text on this page — the reveal should read
+     like an indicator lighting up, not a sticker. */
+  h1 .grad{color:var(--lamp)}
   .hero-sub{margin-top:26px; max-width:610px}
   .hero-cta{display:flex; flex-wrap:wrap; gap:12px; margin-top:36px}
   .hero-fine{margin-top:20px; font-size:13.5px; color:var(--fg-3); display:flex; flex-wrap:wrap; gap:7px 16px; align-items:center}
@@ -162,9 +162,9 @@
   /* ---------- demo video ---------- */
   .demo-frame{
     margin-top:44px; padding:10px;
-    background:linear-gradient(180deg,var(--bg-raise),#0a0c0e);
-    border:1px solid var(--line-strong); border-radius:18px;
-    box-shadow:0 30px 90px -30px rgba(155,124,255,.3);
+    background:linear-gradient(180deg,var(--bg-raise),#0c130f);
+    border:1px solid var(--line-strong); border-radius:8px;
+    box-shadow:0 30px 90px -30px rgba(255,176,0,.3);
   }
   .demo-frame video{display:block; width:100%; border-radius:10px; background:#000}
   .demo-cap{display:flex; flex-wrap:wrap; gap:6px 18px; margin-top:16px; padding:0 6px; font-size:13.5px; color:var(--fg-3)}
@@ -173,10 +173,10 @@
   .prompts{display:grid; gap:10px; margin-top:38px}
   .prompt{
     display:flex; gap:12px; align-items:baseline;
-    padding:16px 18px; background:var(--surface); border:1px solid var(--line); border-radius:12px;
+    padding:16px 18px; background:var(--surface); border:1px solid var(--line); border-radius:5px;
     font-family:var(--mono); font-size:13.5px; line-height:1.6; color:var(--fg-2);
   }
-  .prompt .you{color:var(--violet); flex:none; font-weight:500}
+  .prompt .you{color:var(--lamp); flex:none; font-weight:500}
 
   /* ---------- story ---------- */
   .story{display:grid; gap:2px; margin-top:8px}
@@ -186,9 +186,9 @@
   }
   .beat:last-child{border-bottom:0}
   .beat .n{
-    font-family:var(--mono); font-size:12.5px; color:var(--violet);
-    background:var(--violet-dim); border:1px solid rgba(155,124,255,.2);
-    width:30px;height:30px;border-radius:8px; display:grid;place-items:center; flex:none; margin-top:2px;
+    font-family:var(--mono); font-size:12.5px; color:var(--lamp);
+    background:var(--lamp-dim); border:1px solid rgba(255,176,0,.2);
+    width:30px;height:30px;border-radius:4px; display:grid;place-items:center; flex:none; margin-top:2px;
   }
   .beat h3{margin-bottom:8px}
   .beat p{color:var(--fg-2); font-size:16px}
@@ -198,13 +198,13 @@
   .strip{display:flex; flex-wrap:wrap; gap:10px; margin-top:32px}
   .chip{
     display:inline-flex; align-items:center; gap:8px;
-    padding:9px 15px; border-radius:9px; font-size:14px; font-weight:500;
+    padding:9px 15px; border-radius:4px; font-size:14px; font-weight:500;
     background:var(--surface); border:1px solid var(--line); color:var(--fg-2);
   }
-  .chip .tick{color:var(--green); font-size:12px}
+  .chip .tick{color:var(--jade); font-size:12px}
   .chip.empty{
-    border-style:dashed; border-color:rgba(155,124,255,.4); color:var(--violet);
-    background:var(--violet-dim); font-weight:600;
+    border-style:dashed; border-color:rgba(255,176,0,.4); color:var(--lamp);
+    background:var(--lamp-dim); font-weight:600;
   }
 
   /* ---------- feature grid ---------- */
@@ -215,55 +215,55 @@
   @media(max-width:600px){ .g2,.g3{grid-template-columns:1fr} }
 
   .card{
-    background:var(--surface); border:1px solid var(--line); border-radius:14px;
+    background:var(--surface); border:1px solid var(--line); border-radius:6px;
     padding:24px; transition:.18s ease;
   }
   .card:hover{border-color:var(--line-strong); background:var(--surface-2)}
   .card h3{margin-bottom:9px; font-size:16.5px}
   .card p{color:var(--fg-2); font-size:14.5px; line-height:1.6}
   .card .ico{
-    width:34px;height:34px;border-radius:9px; display:grid;place-items:center; margin-bottom:16px;
-    background:var(--violet-dim); border:1px solid rgba(155,124,255,.2); color:var(--violet);
+    width:34px;height:34px;border-radius:4px; display:grid;place-items:center; margin-bottom:16px;
+    background:var(--lamp-dim); border:1px solid rgba(255,176,0,.2); color:var(--lamp);
   }
-  .card.g .ico{background:var(--green-dim); border-color:rgba(74,222,155,.2); color:var(--green)}
-  .card.a .ico{background:var(--amber-dim); border-color:rgba(240,184,94,.2); color:var(--amber)}
+  .card.g .ico{background:var(--jade-dim); border-color:rgba(124,201,166,.2); color:var(--jade)}
+  .card.a .ico{background:var(--signal-dim); border-color:rgba(255,120,73,.2); color:var(--signal)}
 
   /* ---------- backends ---------- */
   .backend{
     display:grid; grid-template-columns:1fr auto; gap:16px; align-items:center;
     padding:18px 20px; background:var(--surface); border:1px solid var(--line);
-    border-radius:12px;
+    border-radius:5px;
   }
   .backend + .backend{margin-top:10px}
   .backend b{display:block; font-size:15.5px; font-weight:600}
   .backend span{font-size:14px; color:var(--fg-2)}
   .pill{
-    font-family:var(--mono); font-size:11.5px; padding:4px 9px; border-radius:6px;
+    font-family:var(--mono); font-size:11.5px; padding:4px 9px; border-radius:3px;
     border:1px solid var(--line); color:var(--fg-3); white-space:nowrap;
   }
-  .pill.on{color:var(--green); border-color:rgba(74,222,155,.28); background:var(--green-dim)}
+  .pill.on{color:var(--jade); border-color:rgba(124,201,166,.28); background:var(--jade-dim)}
   @media(max-width:520px){ .backend{grid-template-columns:1fr} }
 
   /* ---------- orchestration ---------- */
   .orch{position:relative; padding-block:var(--section); overflow:hidden}
   .orch::before{
     content:''; position:absolute; inset:0; pointer-events:none;
-    background:radial-gradient(52% 46% at 50% 40%, rgba(155,124,255,.11), transparent 72%);
+    background:radial-gradient(52% 46% at 50% 40%, rgba(255,176,0,.11), transparent 72%);
   }
   .orch .wrap{position:relative}
   .diagram{
     margin-top:44px; padding:clamp(16px,3.4vw,34px);
-    background:linear-gradient(180deg,var(--bg-raise),#0a0c0e);
-    border:1px solid var(--line); border-radius:18px; overflow-x:auto;
+    background:linear-gradient(180deg,var(--bg-raise),#0c130f);
+    border:1px solid var(--line); border-radius:8px; overflow-x:auto;
   }
   .diagram svg{display:block; min-width:640px; width:100%; height:auto}
 
   .vs{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:44px}
   @media(max-width:700px){ .vs{grid-template-columns:1fr} }
-  .vs-col{background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:24px}
-  .vs-col.good{border-color:rgba(155,124,255,.28); background:linear-gradient(180deg,rgba(155,124,255,.06),var(--surface))}
+  .vs-col{background:var(--surface); border:1px solid var(--line); border-radius:6px; padding:24px}
+  .vs-col.good{border-color:rgba(255,176,0,.28); background:linear-gradient(180deg,rgba(255,176,0,.06),var(--surface))}
   .vs-col .lbl{font-size:12px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--fg-3); margin-bottom:16px}
-  .vs-col.good .lbl{color:var(--violet)}
+  .vs-col.good .lbl{color:var(--lamp)}
   .steps{list-style:none; margin:0; padding:0; display:grid; gap:9px}
   .steps li{
     font-size:14.5px; color:var(--fg-2); padding-left:26px; position:relative; line-height:1.55;
@@ -271,7 +271,7 @@
   .steps li::before{
     content:'→'; position:absolute; left:0; top:0; color:var(--fg-3); font-family:var(--mono); font-size:13px;
   }
-  .vs-col.good .steps li::before{content:'✦'; color:var(--violet)}
+  .vs-col.good .steps li::before{content:'✦'; color:var(--lamp)}
   .vs-col .out{margin-top:18px; padding-top:16px; border-top:1px solid var(--line); font-size:14px; color:var(--fg-3)}
   .vs-col.good .out{color:var(--fg-2)}
 
@@ -279,21 +279,21 @@
   .tools{display:grid; grid-template-columns:repeat(auto-fill,minmax(206px,1fr)); gap:8px; margin-top:12px}
   .tool{
     font-family:var(--mono); font-size:12.5px; color:var(--fg-2);
-    padding:10px 13px; background:var(--surface); border:1px solid var(--line); border-radius:8px;
+    padding:10px 13px; background:var(--surface); border:1px solid var(--line); border-radius:4px;
     display:flex; align-items:center; gap:9px;
   }
-  .tool .d{width:5px;height:5px;border-radius:50%; background:var(--violet); flex:none; opacity:.75}
-  .tool.o .d{background:var(--green)}
+  .tool .d{width:5px;height:5px;border-radius:50%; background:var(--lamp); flex:none; opacity:.75}
+  .tool.o .d{background:var(--jade)}
   .toolset-label{
     display:flex; align-items:center; gap:10px; margin-top:34px; margin-bottom:6px;
     font-size:13px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--fg-3);
   }
-  .toolset-label .d{width:6px;height:6px;border-radius:50%;background:var(--violet)}
-  .toolset-label.o .d{background:var(--green)}
+  .toolset-label .d{width:6px;height:6px;border-radius:50%;background:var(--lamp)}
+  .toolset-label.o .d{background:var(--jade)}
 
   /* ---------- honesty ---------- */
   .honest{
-    background:linear-gradient(180deg,rgba(240,184,94,.05),transparent 60%);
+    background:linear-gradient(180deg,rgba(255,120,73,.05),transparent 60%);
     border-top:1px solid var(--line); border-bottom:1px solid var(--line);
   }
   .wont{display:grid; gap:0; margin-top:34px}
@@ -302,28 +302,28 @@
     display:grid; grid-template-columns:auto 1fr; gap:16px; align-items:baseline;
   }
   .wont > div:last-child{border-bottom:0}
-  .wont .x{color:var(--amber); font-family:var(--mono); font-size:14px; line-height:1.5}
+  .wont .x{color:var(--signal); font-family:var(--mono); font-size:14px; line-height:1.5}
   .wont b{display:block; margin-bottom:5px; font-size:16px}
   .wont p{color:var(--fg-2); font-size:14.5px}
 
   /* ---------- get it ---------- */
   .dl{
     background:linear-gradient(180deg,var(--surface),var(--bg-raise));
-    border:1px solid var(--line-strong); border-radius:18px; padding:clamp(26px,4vw,40px);
+    border:1px solid var(--line-strong); border-radius:8px; padding:clamp(26px,4vw,40px);
   }
   .dl-top{display:flex; flex-wrap:wrap; gap:22px; align-items:center; justify-content:space-between}
   .dl h3{font-size:22px; margin-bottom:8px}
   .dl-meta{display:flex; flex-wrap:wrap; gap:6px 15px; margin-top:18px; font-size:13px; color:var(--fg-3)}
   .dl-meta span{display:inline-flex; align-items:center; gap:6px}
-  .dl-meta .ok{color:var(--green)}
+  .dl-meta .ok{color:var(--jade)}
 
   pre{
     margin:0; padding:20px; overflow-x:auto;
-    background:#0a0c0e; border:1px solid var(--line); border-radius:12px;
+    background:#0c130f; border:1px solid var(--line); border-radius:5px;
     font-family:var(--mono); font-size:13px; line-height:1.75; color:var(--fg-2);
   }
   pre .c{color:var(--fg-3)}
-  pre .p{color:var(--violet)}
+  pre .p{color:var(--lamp)}
 
   .steps-2{margin-top:22px; display:grid; gap:12px; counter-reset:s}
   .steps-2 li{
@@ -332,19 +332,19 @@
   }
   .steps-2 li::before{
     content:counter(s); position:absolute; left:0; top:1px;
-    width:23px;height:23px;border-radius:6px; display:grid;place-items:center;
-    font-family:var(--mono); font-size:11.5px; color:var(--violet);
-    background:var(--violet-dim); border:1px solid rgba(155,124,255,.2);
+    width:23px;height:23px;border-radius:3px; display:grid;place-items:center;
+    font-family:var(--mono); font-size:11.5px; color:var(--lamp);
+    background:var(--lamp-dim); border:1px solid rgba(255,176,0,.2);
   }
 
   /* ---------- team ---------- */
   .team{
-    border:1px solid var(--line); border-radius:18px; padding:clamp(26px,4vw,44px);
-    background:linear-gradient(140deg,rgba(155,124,255,.07),transparent 62%), var(--surface);
+    border:1px solid var(--line); border-radius:8px; padding:clamp(26px,4vw,44px);
+    background:linear-gradient(140deg,rgba(255,176,0,.07),transparent 62%), var(--surface);
   }
   .stats{display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:32px}
   @media(max-width:620px){ .stats{grid-template-columns:repeat(2,1fr)} }
-  .stat{padding:18px; background:rgba(0,0,0,.28); border:1px solid var(--line); border-radius:11px}
+  .stat{padding:18px; background:rgba(0,0,0,.28); border:1px solid var(--line); border-radius:5px}
   .stat b{display:block; font-size:clamp(22px,3.4vw,30px); font-weight:700; letter-spacing:-.03em; font-family:var(--mono)}
   .stat span{font-size:12.5px; color:var(--fg-3); display:block; margin-top:4px}
 
@@ -474,12 +474,12 @@
       <svg viewBox="0 0 900 380" role="img" aria-label="One chat fans work out to five providers and reads the results back">
         <defs>
           <linearGradient id="gv" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stop-color="#9b7cff" stop-opacity=".9"/>
-            <stop offset="100%" stop-color="#9b7cff" stop-opacity=".25"/>
+            <stop offset="0%" stop-color="#ffb000" stop-opacity=".9"/>
+            <stop offset="100%" stop-color="#ffb000" stop-opacity=".25"/>
           </linearGradient>
           <linearGradient id="gg" x1="1" y1="0" x2="0" y2="0">
-            <stop offset="0%" stop-color="#4ade9b" stop-opacity=".8"/>
-            <stop offset="100%" stop-color="#4ade9b" stop-opacity=".18"/>
+            <stop offset="0%" stop-color="#7cc9a6" stop-opacity=".8"/>
+            <stop offset="100%" stop-color="#7cc9a6" stop-opacity=".18"/>
           </linearGradient>
           <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
             <feGaussianBlur stdDeviation="7" result="b"/>
@@ -489,21 +489,21 @@
 
         <!-- you -->
         <g>
-          <rect x="14" y="158" width="104" height="62" rx="12" fill="#16191d" stroke="rgba(255,255,255,.14)"/>
-          <text x="66" y="184" text-anchor="middle" fill="#eceef1" font-family="Inter,sans-serif" font-size="14" font-weight="600">You</text>
-          <text x="66" y="203" text-anchor="middle" fill="#6e757e" font-family="Inter,sans-serif" font-size="11.5">one chat</text>
+          <rect x="14" y="158" width="104" height="62" rx="6" fill="#18231d" stroke="rgba(255,255,255,.14)"/>
+          <text x="66" y="184" text-anchor="middle" fill="#eae6d8" font-family="Inter,sans-serif" font-size="14" font-weight="600">You</text>
+          <text x="66" y="203" text-anchor="middle" fill="#74796a" font-family="Inter,sans-serif" font-size="11.5">one chat</text>
         </g>
 
         <path d="M118 189 H196" stroke="url(#gv)" stroke-width="2" fill="none"/>
-        <circle cx="196" cy="189" r="3" fill="#9b7cff"/>
+        <circle cx="196" cy="189" r="3" fill="#ffb000"/>
 
         <!-- agent -->
         <g filter="url(#glow)">
-          <rect x="200" y="146" width="176" height="86" rx="14" fill="#1a1526" stroke="rgba(155,124,255,.45)"/>
+          <rect x="200" y="146" width="176" height="86" rx="6" fill="#231e0e" stroke="rgba(255,176,0,.45)"/>
         </g>
-        <text x="288" y="177" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-size="14.5" font-weight="700">T3 Agent</text>
-        <text x="288" y="197" text-anchor="middle" fill="#9b7cff" font-family="JetBrains Mono,monospace" font-size="11">your key · your model</text>
-        <text x="288" y="215" text-anchor="middle" fill="#6e757e" font-family="Inter,sans-serif" font-size="11">picks who does what</text>
+        <text x="288" y="177" text-anchor="middle" fill="#eae6d8" font-family="Inter,sans-serif" font-size="14.5" font-weight="700">T3 Agent</text>
+        <text x="288" y="197" text-anchor="middle" fill="#ffb000" font-family="JetBrains Mono,monospace" font-size="11">your key · your model</text>
+        <text x="288" y="215" text-anchor="middle" fill="#74796a" font-family="Inter,sans-serif" font-size="11">picks who does what</text>
 
         <!-- fan out lines -->
         <g fill="none" stroke="url(#gv)" stroke-width="1.7">
@@ -516,41 +516,41 @@
 
         <!-- provider nodes -->
         <g font-family="Inter,sans-serif">
-          <g><rect x="528" y="22" width="182" height="44" rx="10" fill="#111316" stroke="rgba(255,255,255,.1)"/>
-             <circle cx="550" cy="44" r="4" fill="#4ade9b"/>
-             <text x="566" y="41" fill="#eceef1" font-size="13" font-weight="600">Claude Code</text>
-             <text x="566" y="55" fill="#6e757e" font-size="10.5">subscription · already paid</text></g>
+          <g><rect x="528" y="22" width="182" height="44" rx="5" fill="#131c17" stroke="rgba(255,255,255,.1)"/>
+             <circle cx="550" cy="44" r="4" fill="#7cc9a6"/>
+             <text x="566" y="41" fill="#eae6d8" font-size="13" font-weight="600">Claude Code</text>
+             <text x="566" y="55" fill="#74796a" font-size="10.5">subscription · already paid</text></g>
 
-          <g><rect x="528" y="94" width="182" height="44" rx="10" fill="#111316" stroke="rgba(255,255,255,.1)"/>
-             <circle cx="550" cy="116" r="4" fill="#4ade9b"/>
-             <text x="566" y="113" fill="#eceef1" font-size="13" font-weight="600">Codex</text>
-             <text x="566" y="127" fill="#6e757e" font-size="10.5">subscription · already paid</text></g>
+          <g><rect x="528" y="94" width="182" height="44" rx="5" fill="#131c17" stroke="rgba(255,255,255,.1)"/>
+             <circle cx="550" cy="116" r="4" fill="#7cc9a6"/>
+             <text x="566" y="113" fill="#eae6d8" font-size="13" font-weight="600">Codex</text>
+             <text x="566" y="127" fill="#74796a" font-size="10.5">subscription · already paid</text></g>
 
-          <g><rect x="528" y="167" width="182" height="44" rx="10" fill="#111316" stroke="rgba(255,255,255,.1)"/>
-             <circle cx="550" cy="189" r="4" fill="#f0b85e"/>
-             <text x="566" y="186" fill="#eceef1" font-size="13" font-weight="600">Cursor</text>
-             <text x="566" y="200" fill="#6e757e" font-size="10.5">per token</text></g>
+          <g><rect x="528" y="167" width="182" height="44" rx="5" fill="#131c17" stroke="rgba(255,255,255,.1)"/>
+             <circle cx="550" cy="189" r="4" fill="#ff7849"/>
+             <text x="566" y="186" fill="#eae6d8" font-size="13" font-weight="600">Cursor</text>
+             <text x="566" y="200" fill="#74796a" font-size="10.5">per token</text></g>
 
-          <g><rect x="528" y="240" width="182" height="44" rx="10" fill="#111316" stroke="rgba(255,255,255,.1)"/>
-             <circle cx="550" cy="262" r="4" fill="#f0b85e"/>
-             <text x="566" y="259" fill="#eceef1" font-size="13" font-weight="600">Grok Build</text>
-             <text x="566" y="273" fill="#6e757e" font-size="10.5">per token</text></g>
+          <g><rect x="528" y="240" width="182" height="44" rx="5" fill="#131c17" stroke="rgba(255,255,255,.1)"/>
+             <circle cx="550" cy="262" r="4" fill="#ff7849"/>
+             <text x="566" y="259" fill="#eae6d8" font-size="13" font-weight="600">Grok Build</text>
+             <text x="566" y="273" fill="#74796a" font-size="10.5">per token</text></g>
 
-          <g><rect x="528" y="312" width="182" height="44" rx="10" fill="#111316" stroke="rgba(255,255,255,.1)"/>
-             <circle cx="550" cy="334" r="4" fill="#4ade9b"/>
-             <text x="566" y="331" fill="#eceef1" font-size="13" font-weight="600">OpenCode</text>
-             <text x="566" y="345" fill="#6e757e" font-size="10.5">subscription · already paid</text></g>
+          <g><rect x="528" y="312" width="182" height="44" rx="5" fill="#131c17" stroke="rgba(255,255,255,.1)"/>
+             <circle cx="550" cy="334" r="4" fill="#7cc9a6"/>
+             <text x="566" y="331" fill="#eae6d8" font-size="13" font-weight="600">OpenCode</text>
+             <text x="566" y="345" fill="#74796a" font-size="10.5">subscription · already paid</text></g>
         </g>
 
         <!-- return path -->
         <path d="M710 44 C 800 44, 800 189, 800 189 C 800 189, 800 334, 710 334" fill="none" stroke="url(#gg)" stroke-width="1.6" stroke-dasharray="4 5"/>
-        <path d="M800 189 H 836" stroke="#4ade9b" stroke-opacity=".55" stroke-width="1.6" stroke-dasharray="4 5"/>
-        <text x="844" y="180" fill="#4ade9b" font-family="Inter,sans-serif" font-size="11" font-weight="600">reads</text>
-        <text x="844" y="195" fill="#4ade9b" font-family="Inter,sans-serif" font-size="11" font-weight="600">back</text>
-        <text x="844" y="210" fill="#6e757e" font-family="Inter,sans-serif" font-size="10">what</text>
-        <text x="844" y="223" fill="#6e757e" font-family="Inter,sans-serif" font-size="10">they did</text>
+        <path d="M800 189 H 836" stroke="#7cc9a6" stroke-opacity=".55" stroke-width="1.6" stroke-dasharray="4 5"/>
+        <text x="844" y="180" fill="#7cc9a6" font-family="Inter,sans-serif" font-size="11" font-weight="600">reads</text>
+        <text x="844" y="195" fill="#7cc9a6" font-family="Inter,sans-serif" font-size="11" font-weight="600">back</text>
+        <text x="844" y="210" fill="#74796a" font-family="Inter,sans-serif" font-size="10">what</text>
+        <text x="844" y="223" fill="#74796a" font-family="Inter,sans-serif" font-size="10">they did</text>
 
-        <text x="452" y="24" text-anchor="middle" fill="#9b7cff" font-family="JetBrains Mono,monospace" font-size="10.5">starts work</text>
+        <text x="452" y="24" text-anchor="middle" fill="#ffb000" font-family="JetBrains Mono,monospace" font-size="10.5">starts work</text>
       </svg>
     </div>
 
@@ -563,7 +563,7 @@
         the cheap work on the plan you're already paying for.</p>
       </div>
       <div class="card">
-        <div class="ico"><svg width="17" height="17" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3.5h12M2 8h12M2 12.5h12"/><circle cx="5.5" cy="3.5" r="1.6" fill="#0d0f11"/><circle cx="10.5" cy="8" r="1.6" fill="#0d0f11"/><circle cx="4.5" cy="12.5" r="1.6" fill="#0d0f11"/></svg></div>
+        <div class="ico"><svg width="17" height="17" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3.5h12M2 8h12M2 12.5h12"/><circle cx="5.5" cy="3.5" r="1.6" fill="#101814"/><circle cx="10.5" cy="8" r="1.6" fill="#101814"/><circle cx="4.5" cy="12.5" r="1.6" fill="#101814"/></svg></div>
         <h3>It picks the dial settings</h3>
         <p>Provider, model, and how hard to think — chosen per task. Ask for a reasoning level a model
         doesn't offer and it uses the nearest one that model does, instead of refusing and wasting
@@ -757,7 +757,7 @@
 <section class="honest" id="limits">
   <div class="wrap">
     <div class="sec-head rv" style="margin-bottom:0">
-      <p class="eyebrow" style="color:var(--amber)">Read this part</p>
+      <p class="eyebrow" style="color:var(--signal)">Read this part</p>
       <h2>What it won't do.</h2>
       <p class="lede">Stated up front, because finding out later is worse.</p>
     </div>
@@ -837,7 +837,7 @@
       <div class="dl-meta">
         <span>~152 MB</span>
         <span>v0.0.33</span>
-        <span style="color:var(--amber)">unsigned preview — macOS objects once, steps below</span>
+        <span style="color:var(--signal)">unsigned preview — macOS objects once, steps below</span>
       </div>
 
       <ol class="steps-2">
