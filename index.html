@@ -172,57 +172,90 @@
   .demo-cap{display:flex; flex-wrap:wrap; gap:6px 18px; margin-top:16px; padding:0 6px; font-size:13.5px; color:var(--fg-3)}
 
 
-  /* ---------- live mockups ---------- */
-  .mock{background:linear-gradient(180deg,var(--bg-raise),#0b1315); border:1px solid var(--line-strong); border-radius:8px; overflow:hidden}
-  .mock-bar{display:flex; align-items:center; gap:10px; padding:10px 14px; border-bottom:1px solid var(--line); font-family:var(--mono); font-size:11px; color:var(--fg-3)}
-  .mock-bar .dots{display:flex; gap:5px}
-  .mock-bar .dots i{width:8px;height:8px;border-radius:50%;background:var(--surface-2);border:1px solid var(--line)}
+  /* ---------- live mockups: T3 Code's own dark theme, tokens lifted from the app ---------- */
+  .mock{
+    --m-bg:#0a0a0a; --m-card:#121212; --m-pop:#191919; --m-fg:#f0f0f1; --m-mut:#82828a;
+    --m-line:rgba(255,255,255,.07); --m-hov:rgba(255,255,255,.045); --m-pill:rgba(255,255,255,.055);
+    --m-blue:#4c5fe8; --m-star:#fbbf24; --m-ok:#34d399;
+    background:var(--m-bg); border:1px solid rgba(255,255,255,.09); border-radius:10px; overflow:hidden;
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; color:var(--m-fg);
+    box-shadow:0 24px 70px -24px rgba(0,0,0,.7);
+  }
+  .mock-bar{display:flex; align-items:center; gap:10px; padding:10px 14px; border-bottom:1px solid var(--m-line); font-size:12px; color:var(--m-mut)}
+  .mock-bar .dots{display:flex; gap:6px}
+  .mock-bar .dots i{width:11px;height:11px;border-radius:50%}
+  .mock-bar .dots i:nth-child(1){background:#ff5f57}
+  .mock-bar .dots i:nth-child(2){background:#febc2e}
+  .mock-bar .dots i:nth-child(3){background:#28c840}
+  .mock-bar b{color:var(--m-fg); font-weight:600}
 
-  .conductor{display:grid; grid-template-columns:1.6fr 1fr; min-height:330px}
-  @media(max-width:700px){ .conductor{grid-template-columns:1fr} .threads{border-left:0; border-top:1px solid var(--line)} }
-  .chat{padding:18px; display:flex; flex-direction:column; gap:10px}
-  .msg{max-width:92%; padding:10px 13px; border-radius:6px; font-size:13.5px; line-height:1.55; opacity:0; transform:translateY(6px); transition:.35s ease}
+  .conductor{display:grid; grid-template-columns:230px 1fr; min-height:400px}
+  @media(max-width:700px){ .conductor{grid-template-columns:1fr} .srail{display:none} }
+
+  .srail{background:var(--m-card); border-right:1px solid var(--m-line); padding:10px 8px; font-size:13px}
+  .srail .shead{display:flex; align-items:center; gap:7px; color:var(--m-mut); padding:6px 8px 10px; font-size:12.5px}
+  .srow{border-radius:7px; padding:7px 8px; margin-bottom:2px; opacity:0; transform:translateY(6px); transition:.4s ease}
+  .srow.show{opacity:1; transform:none}
+  .srow:hover{background:var(--m-hov)}
+  .sproj{display:flex; align-items:center; gap:6px; color:var(--m-mut); font-size:11.5px}
+  .sproj .t{margin-left:auto}
+  .stitle{display:flex; align-items:center; gap:6px; margin-top:3px; font-size:13px; color:var(--m-fg)}
+  .stitle .pv{margin-left:auto; display:inline-flex; color:var(--m-mut)}
+  .sdot{width:7px;height:7px;border-radius:50%;background:var(--m-blue); animation:pulse 1.1s ease-in-out infinite; flex:none}
+  .srow.done .sdot{background:var(--m-ok); animation:none}
+  .sdivider{display:flex; align-items:center; gap:8px; color:var(--m-mut); font-size:11.5px; padding:12px 8px 6px}
+  .sdivider::after{content:''; flex:1; height:1px; background:var(--m-line)}
+  .srow.done .sproj{display:none}
+  .srow.done .stitle{color:var(--m-mut); font-size:12.5px}
+  @keyframes pulse{50%{opacity:.3; transform:scale(.82)}}
+
+  .chatpane{display:flex; flex-direction:column; min-width:0}
+  .chat{flex:1; padding:18px 18px 10px; display:flex; flex-direction:column; gap:10px}
+  .msg{max-width:88%; padding:9px 13px; border-radius:12px; font-size:13.5px; line-height:1.55; opacity:0; transform:translateY(6px); transition:.35s ease}
   .msg.show{opacity:1; transform:none}
-  .msg.you{align-self:flex-end; background:var(--surface-2); border:1px solid var(--line); color:var(--fg)}
-  .msg.agent{align-self:flex-start; background:var(--lamp-dim); border:1px solid rgba(127,231,210,.25); color:var(--fg)}
-  .tools-row{display:flex; flex-direction:column; gap:6px}
-  .tcall{display:inline-flex; align-items:center; gap:8px; align-self:flex-start; font-family:var(--mono); font-size:11.5px; color:var(--fg-2); background:var(--surface); border:1px solid var(--line); border-left:2px solid var(--lamp); padding:7px 10px; border-radius:4px; opacity:0; transform:translateX(-6px); transition:.3s}
+  .msg.you{align-self:flex-end; background:rgba(255,255,255,.055); color:var(--m-fg); border-bottom-right-radius:4px}
+  .msg.agent{align-self:flex-start; background:transparent; padding-left:0; color:var(--m-fg)}
+  .tools-row{display:flex; flex-direction:column; gap:5px}
+  .tcall{display:inline-flex; align-items:center; gap:8px; align-self:flex-start; font-size:12.5px; color:var(--m-mut); padding:5px 0; opacity:0; transform:translateX(-6px); transition:.3s}
   .tcall.show{opacity:1; transform:none}
-  .tcall b{color:var(--lamp); font-weight:500}
-  .caret{display:inline-block; width:7px; height:14px; background:var(--lamp); vertical-align:-2px; animation:blink 1s steps(1) infinite}
-  @keyframes blink{50%{opacity:0}}
-  .threads{border-left:1px solid var(--line); padding:14px; display:flex; flex-direction:column; gap:10px}
-  .threads h4{margin:0 0 2px; font-family:var(--mono); font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--fg-3); font-weight:500}
-  .tcard{background:var(--surface); border:1px solid var(--line); border-radius:5px; padding:11px 12px; opacity:0; transform:translateY(8px); transition:.4s ease}
-  .tcard.show{opacity:1; transform:none}
-  .tcard .t{font-size:13px; font-weight:600}
-  .tcard .prov{font-family:var(--mono); font-size:10.5px; color:var(--fg-3); margin-top:3px}
-  .tcard .st{display:inline-flex; align-items:center; gap:6px; margin-top:8px; font-family:var(--mono); font-size:10.5px; color:var(--fg-2)}
-  .pulse{width:7px;height:7px;border-radius:50%;background:var(--lamp); animation:pulse 1.1s ease-in-out infinite}
-  @keyframes pulse{50%{opacity:.25; transform:scale(.8)}}
-  .tick{color:var(--jade); font-weight:700}
+  .tcall b{color:var(--m-fg); font-weight:500; font-family:var(--mono); font-size:11.5px; background:var(--m-pill); border:1px solid var(--m-line); padding:2px 7px; border-radius:5px}
+  .tick{color:var(--m-ok); font-weight:700}
 
-  .mock-picker{max-width:600px}
-  .prow{display:flex; align-items:center; justify-content:space-between; gap:10px; padding:12px 14px; border-bottom:1px solid var(--line); font-size:14px; transition:background .15s; cursor:default}
-  .prow:hover{background:rgba(255,255,255,.03)}
-  .prow .nm{display:flex; align-items:center; gap:10px; font-weight:600}
-  .prow .sub{font-family:var(--mono); font-size:10.5px; color:var(--fg-3); text-align:right}
-  .prow .ic{width:24px;height:24px;border-radius:5px;display:grid;place-items:center;background:var(--surface-2);border:1px solid var(--line);font-family:var(--mono);font-size:10px;color:var(--fg-2); flex:none}
-  .prow.t3 .ic{background:var(--lamp-dim); border-color:rgba(127,231,210,.3); color:var(--lamp)}
-  .prow.t3.lit{background:var(--lamp-dim)}
-  .new-pill{font-family:var(--mono); font-size:9.5px; letter-spacing:.08em; color:var(--lamp); border:1px solid rgba(127,231,210,.35); border-radius:3px; padding:2px 6px}
-  .flyout{overflow:hidden; max-height:0; opacity:0; transition:max-height .5s ease, opacity .4s ease}
-  .flyout.open{max-height:280px; opacity:1}
-  .mrow{display:flex; justify-content:space-between; align-items:center; gap:10px; padding:9px 14px 9px 48px; font-size:13px; border-top:1px dashed var(--line)}
-  .mrow .v{font-family:var(--mono); font-size:10.5px; color:var(--fg-3)}
-  .effort{display:flex; gap:4px}
-  .effort i{font-family:var(--mono); font-style:normal; font-size:9.5px; padding:2px 6px; border:1px solid var(--line); border-radius:3px; color:var(--fg-3)}
-  .effort i.on{color:var(--lamp); border-color:rgba(127,231,210,.35)}
-  @media(max-width:560px){ .effort{display:none} }
+  .composer{margin:8px 14px 14px; border:1px solid rgba(255,255,255,.09); border-radius:14px; background:var(--m-card); padding:12px 14px 10px}
+  .cinput{min-height:40px; font-size:13.5px; color:var(--m-fg)}
+  .cinput .ph{color:var(--m-mut)}
+  .caret{display:inline-block; width:1.5px; height:15px; background:var(--m-fg); vertical-align:-2px; animation:blink 1s steps(1) infinite}
+  @keyframes blink{50%{opacity:0}}
+  .cpills{display:flex; align-items:center; gap:0; margin-top:8px; font-size:12.5px; color:var(--m-fg)}
+  .cpill{display:inline-flex; align-items:center; gap:7px; background:var(--m-pill); border-radius:9px; padding:6px 11px; font-weight:500; white-space:nowrap}
+  .csep{width:1px; height:18px; background:var(--m-line); margin:0 10px}
+  .cplain{display:inline-flex; align-items:center; gap:6px; color:var(--m-fg); opacity:.9}
+  .chev{color:var(--m-mut)}
+
+  .mock-picker .composer{margin:14px}
+  .picker-pop{margin:0 14px 14px; border:1px solid rgba(255,255,255,.09); border-radius:12px; background:var(--m-pop);
+    overflow:hidden; max-height:0; opacity:0; transition:max-height .5s ease, opacity .4s ease;
+    display:grid; grid-template-columns:46px 1fr}
+  .picker-pop.open{max-height:420px; opacity:1}
+  .prail{border-right:1px solid var(--m-line); padding:10px 0; display:flex; flex-direction:column; align-items:center; gap:4px}
+  .prail .cell{position:relative; width:34px; height:34px; border-radius:8px; display:grid; place-items:center; color:var(--m-mut)}
+  .prail .cell.on{color:var(--m-fg)}
+  .prail .cell.on::before{content:''; position:absolute; left:-6px; top:7px; bottom:7px; width:3px; border-radius:2px; background:var(--m-blue)}
+  .prail .cell.t3{color:var(--m-fg)}
+  .psearch{display:flex; align-items:center; gap:9px; padding:12px 14px 10px; color:var(--m-mut); font-size:14px; border-bottom:2px solid var(--m-blue)}
+  .pbody{grid-column:2; }
+  .mrow{display:flex; align-items:center; gap:10px; padding:9px 12px; margin:2px 6px; border-radius:8px; font-size:14px; cursor:default}
+  .mrow:hover{background:var(--m-hov)}
+  .mrow .nm{color:var(--m-fg)}
+  .mrow .sub{display:flex; align-items:center; gap:5px; color:var(--m-mut); font-size:12px; margin-top:2px}
+  .mrow .right{margin-left:auto; display:flex; align-items:center; gap:9px}
+  .kbd{background:rgba(255,255,255,.07); border-radius:6px; padding:2px 7px; font-size:11px; color:var(--m-mut)}
+  .star{color:var(--m-star)}
+  .hex{display:inline-flex; flex:none}
 
   @media(prefers-reduced-motion:reduce){
-    .msg,.tcall,.tcard{opacity:1; transform:none; transition:none}
-    .caret{display:none} .pulse{animation:none}
+    .msg,.tcall,.srow{opacity:1; transform:none; transition:none}
+    .caret{display:none} .sdot{animation:none}
   }
 
   /* ---------- example prompts ---------- */
@@ -534,33 +567,45 @@
     </div>
 
     <div class="mock rv" style="margin-top:14px">
-      <div class="mock-bar"><span class="dots"><i></i><i></i><i></i></span><span>T3 Code · one thread running two agents</span></div>
+      <div class="mock-bar"><span class="dots"><i></i><i></i><i></i></span><span><b>T3</b> Code</span></div>
       <div class="conductor">
-        <div class="chat">
-          <div class="msg you" id="cmsg0"><span id="ctype"></span><span class="caret" id="ccaret"></span></div>
-          <div class="tools-row">
-            <span class="tcall" id="ctool1"><b>delegate_to_agent</b> Claude Code · review the auth PR · own worktree</span>
-            <span class="tcall" id="ctool2"><b>delegate_to_agent</b> Codex · fix the flaky test · own worktree</span>
-            <span class="tcall" id="ctool3"><b>wait_for_thread</b> ×2 · a real wait, not a poll</span>
+        <div class="srail">
+          <div class="shead"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg> Search</div>
+          <div id="active-rows">
+            <div class="srow tcard" id="tc1">
+              <div class="sproj"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg> Better T3 <span class="t">now</span></div>
+              <div class="stitle"><span class="sdot"></span> Auth PR review <span class="pv"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="3"/><g stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></g></svg></span></div>
+            </div>
+            <div class="srow tcard" id="tc2">
+              <div class="sproj"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg> Better T3 <span class="t">now</span></div>
+              <div class="stitle"><span class="sdot"></span> Flaky test fix <span class="pv"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8.5"/><path d="M12 3.5v17M4.6 7.8l14.8 8.4M4.6 16.2l14.8-8.4"/></svg></span></div>
+            </div>
           </div>
-          <div class="msg agent" id="cmsg1">Both settled. Claude flagged two issues on the PR; Codex's fix is green on <span class="mono">t3-agent/flaky-test</span>. Nothing merged without you.</div>
+          <div class="sdivider">Settled</div>
+          <div id="settled-rows"></div>
         </div>
-        <div class="threads">
-          <h4>Delegated threads</h4>
-          <div class="tcard" id="tc1">
-            <div class="t">Auth PR review</div>
-            <div class="prov">Claude Code · subscription</div>
-            <div class="st" id="tc1s"><span class="pulse"></span> running</div>
+        <div class="chatpane">
+          <div class="chat">
+            <div class="msg you" id="cmsg0"></div>
+            <div class="tools-row">
+              <span class="tcall" id="ctool1"><b>delegate_to_agent</b> Claude Code · review the auth PR · own worktree</span>
+              <span class="tcall" id="ctool2"><b>delegate_to_agent</b> Codex · fix the flaky test · own worktree</span>
+              <span class="tcall" id="ctool3"><b>wait_for_thread</b> ×2 · a real wait, not a poll</span>
+            </div>
+            <div class="msg agent" id="cmsg1">Both settled. Claude flagged two issues on the PR; Codex's fix is green on <span class="mono" style="font-size:12px">t3-agent/flaky-test</span>. Nothing merged without you.</div>
           </div>
-          <div class="tcard" id="tc2">
-            <div class="t">Flaky test fix</div>
-            <div class="prov">Codex · subscription</div>
-            <div class="st" id="tc2s"><span class="pulse"></span> running</div>
+          <div class="composer">
+            <div class="cinput"><span id="ctype"></span><span class="ph" id="cph">Ask for follow-up changes or attach images</span><span class="caret" id="ccaret" style="display:none"></span></div>
+            <div class="cpills">
+              <span class="cpill"><svg class="hex" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 21 7.2v9.6L12 22 3 16.8V7.2z"/><text x="12" y="15.5" text-anchor="middle" font-size="9" font-family="sans-serif" stroke="none" fill="currentColor">T</text></svg> DeepSeek V4 Flash <svg class="chev" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m6 9 6 6 6-6"/></svg></span>
+              <span class="csep"></span><span class="cplain">Default <svg class="chev" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m6 9 6 6 6-6"/></svg></span>
+              <span class="csep"></span><span class="cplain"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 7.5-2"/></svg> Full access <svg class="chev" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m6 9 6 6 6-6"/></svg></span>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <p class="demo-cap rv"><span>a sketch of what delegating feels like, on loop</span><span>·</span><span>the real thing is the video above</span></p>
+    <p class="demo-cap rv"><span>the app's own dark theme, tokens and all</span><span>·</span><span>on loop</span><span>·</span><span>the real thing is the video above</span></p>
 
     <div class="grid g2 rv" style="margin-top:14px">
       <div class="card">
@@ -688,19 +733,34 @@
     <div class="sec-head rv" style="margin-top:var(--section); margin-bottom:26px">
       <p class="eyebrow">Try it, right here</p>
       <h2 style="font-size:clamp(24px,3.4vw,32px)">It sits in the picker like<br />it was always there.</h2>
-      <p class="lede">A working sketch of the model picker. Hover the new row.</p>
+      <p class="lede">The composer, in the app's own dark theme. Hover the model pill.</p>
     </div>
 
-    <div class="mock mock-picker rv" id="picker">
-      <div class="mock-bar"><span class="dots"><i></i><i></i><i></i></span><span>Choose a provider</span></div>
-      <div class="prow"><span class="nm"><span class="ic">CC</span>Claude Code</span><span class="sub">subscription</span></div>
-      <div class="prow"><span class="nm"><span class="ic">CX</span>Codex</span><span class="sub">subscription</span></div>
-      <div class="prow"><span class="nm"><span class="ic">CU</span>Cursor</span><span class="sub">per token</span></div>
-      <div class="prow t3" id="prowT3"><span class="nm"><span class="ic">T3</span>T3 Orchestrator<span class="new-pill">NEW</span></span><span class="sub">your key · 400 models</span></div>
-      <div class="flyout" id="flyout">
-        <div class="mrow"><span>Claude Sonnet 5 <span class="v">· Anthropic</span></span><span class="effort"><i>none</i><i>low</i><i class="on">med</i><i>high</i></span></div>
-        <div class="mrow"><span>Kimi K2 Thinking <span class="v">· Moonshot AI</span></span><span class="effort"><i>none</i><i class="on">low</i><i>med</i><i>high</i></span></div>
-        <div class="mrow"><span>DeepSeek V4 Flash <span class="v">· DeepSeek · ran the demo</span></span><span class="effort"><i class="on">none</i><i>low</i><i>med</i><i>high</i></span></div>
+    <div class="mock mock-picker rv" id="picker" style="max-width:640px">
+      <div class="composer" style="border:0; border-bottom:1px solid var(--m-line); border-radius:0; margin:0; padding:16px 16px 12px; background:transparent">
+        <div class="cinput"><span class="ph">Ask for follow-up changes or attach images</span></div>
+        <div class="cpills">
+          <span class="cpill" id="prowT3"><svg class="hex" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 21 7.2v9.6L12 22 3 16.8V7.2z"/><text x="12" y="15.5" text-anchor="middle" font-size="9" font-family="sans-serif" stroke="none" fill="currentColor">T</text></svg> DeepSeek V4 Flash Lat… <svg class="chev" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m6 9 6 6 6-6"/></svg></span>
+          <span class="csep"></span><span class="cplain">Default <svg class="chev" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m6 9 6 6 6-6"/></svg></span>
+          <span class="csep"></span><span class="cplain"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 7.5-2"/></svg> Full access <svg class="chev" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m6 9 6 6 6-6"/></svg></span>
+        </div>
+      </div>
+      <div class="picker-pop" id="flyout">
+        <div class="prail">
+          <div class="cell on"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg></div>
+          <div class="cell"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="3"/><g stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></g></svg></div>
+          <div class="cell"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8.5"/><path d="M12 3.5v17M4.6 7.8l14.8 8.4M4.6 16.2l14.8-8.4"/></svg></div>
+          <div class="cell"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a8 8 0 0 1-8 8H4l2-3a8 8 0 1 1 15-5z"/></svg></div>
+          <div class="cell t3"><svg class="hex" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 21 7.2v9.6L12 22 3 16.8V7.2z"/><text x="12" y="15.5" text-anchor="middle" font-size="9" font-family="sans-serif" stroke="none" fill="currentColor">T</text></svg></div>
+        </div>
+        <div class="pbody">
+          <div class="psearch"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg> Search models...</div>
+          <div class="mrow"><div><div class="nm">Kimi K3</div><div class="sub"><svg class="hex" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 21 7.2v9.6L12 22 3 16.8V7.2z"/><text x="12" y="15.5" text-anchor="middle" font-size="9" font-family="sans-serif" stroke="none" fill="currentColor">T</text></svg> T3 Agent · Moonshot AI</div></div><div class="right"><span class="kbd">⌘1</span><span class="star"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg></span></div></div>
+          <div class="mrow"><div><div class="nm">DeepSeek V4 Pro</div><div class="sub"><svg class="hex" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 21 7.2v9.6L12 22 3 16.8V7.2z"/><text x="12" y="15.5" text-anchor="middle" font-size="9" font-family="sans-serif" stroke="none" fill="currentColor">T</text></svg> T3 Agent</div></div><div class="right"><span class="kbd">⌘2</span><span class="star"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg></span></div></div>
+          <div class="mrow"><div><div class="nm">Qwen3.8 Max</div><div class="sub"><svg class="hex" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 21 7.2v9.6L12 22 3 16.8V7.2z"/><text x="12" y="15.5" text-anchor="middle" font-size="9" font-family="sans-serif" stroke="none" fill="currentColor">T</text></svg> T3 Agent · Qwen</div></div><div class="right"><span class="kbd">⌘3</span><span class="star"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg></span></div></div>
+          <div class="mrow"><div><div class="nm">MiniMax M2.7</div><div class="sub"><svg class="hex" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 21 7.2v9.6L12 22 3 16.8V7.2z"/><text x="12" y="15.5" text-anchor="middle" font-size="9" font-family="sans-serif" stroke="none" fill="currentColor">T</text></svg> T3 Agent</div></div><div class="right"><span class="kbd">⌘4</span><span class="star"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg></span></div></div>
+          <div class="mrow"><div><div class="nm">GLM 5.2</div><div class="sub"><svg class="hex" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 21 7.2v9.6L12 22 3 16.8V7.2z"/><text x="12" y="15.5" text-anchor="middle" font-size="9" font-family="sans-serif" stroke="none" fill="currentColor">T</text></svg> T3 Agent · Z.ai</div></div><div class="right"><span class="kbd">⌘5</span><span class="star"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg></span></div></div>
+        </div>
       </div>
     </div>
 
@@ -1015,43 +1075,57 @@ vp i
     var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var prompt = "Have Claude review my auth PR while Codex fixes the flaky test. Wake me when both settle.";
     var typeEl = document.getElementById('ctype');
-    var caret = document.getElementById('ccaret');
     if (!typeEl) return;
-    var ids = ['cmsg0','ctool1','ctool2','tc1','tc2','ctool3','cmsg1'];
+    var caret = document.getElementById('ccaret');
+    var ph = document.getElementById('cph');
+    var bubble = document.getElementById('cmsg0');
+    var active = document.getElementById('active-rows');
+    var settledBox = document.getElementById('settled-rows');
+    var showIds = ['ctool1','ctool2','tc1','tc2','ctool3','cmsg1'];
     var timers = [];
     function later(fn, ms){ timers.push(setTimeout(fn, ms)); }
     function show(id){ document.getElementById(id).classList.add('show'); }
-    function running(id){ document.getElementById(id).innerHTML = '<span class="pulse"></span> running'; }
-    function settled(id, extra){ document.getElementById(id).innerHTML = '<span class="tick">✓</span> settled' + (extra || ''); }
+    function settle(id){
+      var row = document.getElementById(id);
+      row.classList.add('done');
+      settledBox.appendChild(row);
+    }
     function finale(){
-      ids.forEach(show); typeEl.textContent = prompt; caret.style.display = 'none';
-      settled('tc1s'); settled('tc2s');
+      showIds.forEach(show); bubble.textContent = prompt; bubble.classList.add('show');
+      ph.style.display = 'none'; settle('tc1'); settle('tc2');
     }
     if (reduced) { finale(); return; }
     function reset(){
       timers.forEach(clearTimeout); timers = [];
-      ids.forEach(function(id){ document.getElementById(id).classList.remove('show'); });
-      typeEl.textContent = ''; caret.style.display = 'inline-block';
-      running('tc1s'); running('tc2s');
+      showIds.forEach(function(id){ document.getElementById(id).classList.remove('show'); });
+      bubble.textContent = ''; bubble.classList.remove('show');
+      typeEl.textContent = ''; ph.style.display = 'none'; caret.style.display = 'inline-block';
+      ['tc1','tc2'].forEach(function(id){
+        var row = document.getElementById(id);
+        row.classList.remove('done');
+        active.appendChild(row);
+      });
     }
     function play(){
       reset();
-      show('cmsg0');
       var i = 0;
       var typer = setInterval(function(){
         typeEl.textContent = prompt.slice(0, ++i);
         if (i >= prompt.length) {
           clearInterval(typer);
-          caret.style.display = 'none';
-          later(function(){ show('ctool1'); }, 450);
-          later(function(){ show('ctool2'); }, 950);
-          later(function(){ show('tc1'); }, 1350);
-          later(function(){ show('tc2'); }, 1650);
-          later(function(){ show('ctool3'); }, 2300);
-          later(function(){ settled('tc1s'); }, 4100);
-          later(function(){ settled('tc2s'); }, 5000);
-          later(function(){ show('cmsg1'); }, 5500);
-          later(play, 10000);
+          later(function(){
+            caret.style.display = 'none'; typeEl.textContent = ''; ph.style.display = '';
+            bubble.textContent = prompt; bubble.classList.add('show');
+          }, 500);
+          later(function(){ show('ctool1'); }, 1100);
+          later(function(){ show('ctool2'); }, 1600);
+          later(function(){ show('tc1'); }, 2000);
+          later(function(){ show('tc2'); }, 2300);
+          later(function(){ show('ctool3'); }, 3000);
+          later(function(){ settle('tc1'); }, 4800);
+          later(function(){ settle('tc2'); }, 5700);
+          later(function(){ show('cmsg1'); }, 6200);
+          later(play, 11000);
         }
       }, 22);
       timers.push(typer);
@@ -1066,19 +1140,20 @@ vp i
   })();
 
   (function(){
-    var row = document.getElementById('prowT3');
+    var pill = document.getElementById('prowT3');
     var fly = document.getElementById('flyout');
-    if (!row) return;
-    var open = function(){ fly.classList.add('open'); row.classList.add('lit'); };
-    var close = function(){ fly.classList.remove('open'); row.classList.remove('lit'); };
-    row.addEventListener('mouseenter', open);
+    if (!pill) return;
+    var closeTimer = null;
+    var open = function(){ clearTimeout(closeTimer); fly.classList.add('open'); };
+    var close = function(){ closeTimer = setTimeout(function(){ fly.classList.remove('open'); }, 300); };
+    pill.addEventListener('mouseenter', open);
+    fly.addEventListener('mouseenter', open);
     document.getElementById('picker').addEventListener('mouseleave', close);
-    row.addEventListener('click', function(){ fly.classList.contains('open') ? close() : open(); });
-    // no hover on touch: open it once the picker scrolls into view
+    pill.addEventListener('click', function(){ fly.classList.contains('open') ? close() : open(); });
     if (window.matchMedia('(hover: none)').matches) {
       new IntersectionObserver(function(entries){
         entries.forEach(function(e){ if (e.isIntersecting) setTimeout(open, 700); });
-      }, {threshold:.5}).observe(row);
+      }, {threshold:.5}).observe(pill);
     }
   })();
 </script>
